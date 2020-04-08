@@ -18,13 +18,6 @@ namespace ShooterGame
             }
         }
 
-        public enum State
-        {
-            Idle,
-            Moving
-        }
-
-        public State CurrentState { get; private set; }
         public float CurrentMoveSpeed { get; private set; }
 
         [SerializeField] private DefaultCharacterData m_defaultCharacterData = null;
@@ -35,8 +28,6 @@ namespace ShooterGame
         private Animator m_aniamtor = null;
 
         private float m_speed = 0f;
-
-        private MoveVector m_currentMoveDirection = default;
 
         protected override void Awake()
         {
@@ -61,36 +52,5 @@ namespace ShooterGame
                 m_speed = m_defaultCharacterData.Speed;
             }
         }
-
-        public void Move(MoveVector moveVector)
-        {
-            m_currentMoveDirection = moveVector;
-            CurrentState = State.Moving;
-        }
-
-        public void StopMove()
-        {
-            CurrentState = State.Idle;
-        }
-
-        private void FixedUpdate()
-        {
-            switch(CurrentState)
-            {
-                case State.Idle:
-                    {
-                        break;
-                    }
-                case State.Moving:
-                    {
-                        Vector3 _nextPos = transform.position + new Vector3(m_currentMoveDirection.x, 0f, m_currentMoveDirection.z).normalized * m_speed * Time.fixedDeltaTime;
-                        m_rigidbody.MovePosition(_nextPos);
-
-                        Quaternion _newRotation = GameUtility.GetFacingDirection(new Vector3(m_currentMoveDirection.x, 0f, m_currentMoveDirection.z));
-                        m_rigidbody.MoveRotation(Quaternion.Slerp(transform.rotation, _newRotation, 0.5f));
-                        break;
-                    }
-            }
-        }    
     }
 }

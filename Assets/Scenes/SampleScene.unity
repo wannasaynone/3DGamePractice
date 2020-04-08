@@ -738,10 +738,5 @@ PrefabInstance:
       propertyPath: m_followCamera
       value: 
       objectReference: {fileID: 1839317832}
-    - target: {fileID: 1820775055490193181, guid: a5bd06d1be262074d876e296b9fe0238,
-        type: 3}
-      propertyPath: m_rotateSpeed
-      value: 120
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5bd06d1be262074d876e296b9fe0238, type: 3}

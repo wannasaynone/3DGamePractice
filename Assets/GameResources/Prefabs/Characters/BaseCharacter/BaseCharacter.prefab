@@ -913,7 +913,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4302171774370553373}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -936,7 +936,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 6ba3950332166374380587b9402944e1, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -1000,6 +1000,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_character: {fileID: 3565041308368618623}
   m_input: {fileID: 11400000, guid: 900fb439e32b5a0459a2d71398679704, type: 2}
+  m_followCameraRoot: {fileID: 0}
+  m_followCamera: {fileID: 0}
+  m_rotateSpeed: 120
+  m_animator: {fileID: 7162192862255497588}
+  m_paraName_motionX: motionX
+  m_paraName_motionZ: motionZ
+  m_animator_idleState: Idle
+  m_animator_walkState: Walk
 --- !u!1 &4338191407299124085
 GameObject:
   m_ObjectHideFlags: 0
