@@ -83,7 +83,11 @@ namespace ShooterGame
                     }
                 case State.Moving:
                     {
-                        m_rigidbody.MovePosition(transform.position + new Vector3(m_currentMoveDirection.x, 0f, m_currentMoveDirection.z).normalized * m_speed * Time.fixedDeltaTime);
+                        Vector3 _nextPos = transform.position + new Vector3(m_currentMoveDirection.x, 0f, m_currentMoveDirection.z).normalized * m_speed * Time.fixedDeltaTime;
+                        m_rigidbody.MovePosition(_nextPos);
+
+                        Quaternion _newRotation = GameUtility.GetFacingDirection(new Vector3(m_currentMoveDirection.x, 0f, m_currentMoveDirection.z));
+                        m_rigidbody.MoveRotation(Quaternion.Slerp(transform.rotation, _newRotation, 0.5f));
                         break;
                     }
             }

@@ -6,8 +6,10 @@ namespace ShooterGame
 {
     public abstract class InputBase : ScriptableObject
     {
-        public float X { get; protected set; }
-        public float Z { get; protected set; }
+        public float MoveX { get; protected set; }
+        public float MoveZ { get; protected set; }
+        public float MouseX { get; protected set; }
+        public float MouseY { get; protected set; }
 
         public void Tick()
         {

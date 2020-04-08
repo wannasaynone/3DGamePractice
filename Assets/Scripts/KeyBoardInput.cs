@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace ShooterGame
 {
@@ -14,30 +12,35 @@ namespace ShooterGame
 
         protected override void OnTick()
         {
+            Cursor.lockState = CursorLockMode.Locked;
+
+            MouseX = Input.GetAxis("Mouse X");
+            MouseY = Input.GetAxis("Mouse Y");
+
             if (Input.GetKey(KeyCode.W))
             {
-                Z = Mathf.Lerp(Z, 1f, m_increaseSpeed);
+                MoveZ = Mathf.Lerp(MoveZ, 1f, m_increaseSpeed);
             }
             else if (Input.GetKey(KeyCode.S))
             {
-                Z = Mathf.Lerp(Z, -1f, m_increaseSpeed);
+                MoveZ = Mathf.Lerp(MoveZ, -1f, m_increaseSpeed);
             }
             else
             {
-                Z = Mathf.Lerp(Z, 0, m_backZeroSpeed);
+                MoveZ = Mathf.Lerp(MoveZ, 0, m_backZeroSpeed);
             }
 
             if (Input.GetKey(KeyCode.A))
             {
-                X = Mathf.Lerp(X, -1f, m_increaseSpeed);
+                MoveX = Mathf.Lerp(MoveX, -1f, m_increaseSpeed);
             }
             else if (Input.GetKey(KeyCode.D))
             {
-                X = Mathf.Lerp(X, 1f, m_increaseSpeed);
+                MoveX = Mathf.Lerp(MoveX, 1f, m_increaseSpeed);
             }
             else
             {
-                X = Mathf.Lerp(X, 0f, m_backZeroSpeed);
+                MoveX = Mathf.Lerp(MoveX, 0f, m_backZeroSpeed);
             }
         }
     }
