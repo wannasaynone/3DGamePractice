@@ -8,13 +8,17 @@ namespace ShooterGame
         [Header("Follow Camera")]
         [SerializeField] private Transform m_followCameraRoot = null;
         [SerializeField] private CinemachineVirtualCamera m_camera_far = null;
-        [SerializeField] private CinemachineVirtualCamera m_camera_aiming = null;
+        [SerializeField] private CinemachineVirtualCamera m_camera_aiming_right = null;
+        [SerializeField] private CinemachineVirtualCamera m_camera_aiming_left = null;
         [SerializeField] private float m_rotateSpeed = 60f;
         [Header("Animator")]
         [SerializeField] private Animator m_animator = null;
         [SerializeField] private string m_paraName_motionX = "motionX";
         [SerializeField] private string m_paraName_motionZ = "motionZ";
         [SerializeField] private string m_paraName_walk = "walk";
+        [SerializeField] private string m_paraName_aimingRight = "aimingRight";
+
+        private bool m_isAimingRight = false;
 
         private void FixedUpdate()
         {
@@ -48,16 +52,34 @@ namespace ShooterGame
             {
                 m_animator.SetBool(m_paraName_walk, false);
             }
+        }
 
-            if(Input.IsAiming)
+        protected override void OnInputTick()
+        {
+            if (Input.SwitchAimingSide)
+            {
+                m_isAimingRight = !m_isAimingRight;
+                m_animator.SetBool(m_paraName_aimingRight, m_isAimingRight);
+            }
+
+            if (Input.IsAiming)
             {
                 m_camera_far.Priority = 0;
-                m_camera_aiming.Priority = 10;
             }
             else
             {
-                m_camera_far.Priority = 10;
-                m_camera_aiming.Priority = 0;
+                m_camera_far.Priority = 20;
+            }
+
+            if (m_isAimingRight)
+            {
+                m_camera_aiming_right.Priority = 10;
+                m_camera_aiming_left.Priority = 0;
+            }
+            else
+            {
+                m_camera_aiming_right.Priority = 0;
+                m_camera_aiming_left.Priority = 10;
             }
         }
     }

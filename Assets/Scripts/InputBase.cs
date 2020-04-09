@@ -11,6 +11,7 @@ namespace ShooterGame
         public bool IsAiming { get; protected set; }
         public bool StartFire { get; protected set; }
         public bool IsFiring { get; protected set; }
+        public bool SwitchAimingSide { get; protected set; }
 
         public void Tick()
         {

@@ -14,6 +14,9 @@ namespace ShooterGame
         private void Update()
         {
             m_input.Tick();
+            OnInputTick();
         }
+
+        protected abstract void OnInputTick();
     }
 }

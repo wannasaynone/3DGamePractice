@@ -50,6 +50,8 @@ namespace ShooterGame
                 StartFire = Input.GetMouseButtonDown(0);
                 IsFiring = Input.GetMouseButton(0);
             }
+
+            SwitchAimingSide = Input.GetKeyDown(KeyCode.Space);
         }
     }
 }
