@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace ShooterGame
 {
@@ -10,6 +8,9 @@ namespace ShooterGame
         public float MoveZ { get; protected set; }
         public float MouseX { get; protected set; }
         public float MouseY { get; protected set; }
+        public bool IsAiming { get; protected set; }
+        public bool StartFire { get; protected set; }
+        public bool IsFiring { get; protected set; }
 
         public void Tick()
         {

@@ -42,6 +42,14 @@ namespace ShooterGame
             {
                 MoveX = Mathf.Lerp(MoveX, 0f, m_backZeroSpeed);
             }
+
+            IsAiming = Input.GetMouseButton(1);
+
+            if(IsAiming)
+            {
+                StartFire = Input.GetMouseButtonDown(0);
+                IsFiring = Input.GetMouseButton(0);
+            }
         }
     }
 }

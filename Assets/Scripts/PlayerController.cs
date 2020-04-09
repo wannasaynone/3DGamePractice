@@ -7,7 +7,8 @@ namespace ShooterGame
     {
         [Header("Follow Camera")]
         [SerializeField] private Transform m_followCameraRoot = null;
-        [SerializeField] private CinemachineVirtualCamera m_followCamera = null;
+        [SerializeField] private CinemachineVirtualCamera m_camera_far = null;
+        [SerializeField] private CinemachineVirtualCamera m_camera_aiming = null;
         [SerializeField] private float m_rotateSpeed = 60f;
         [Header("Animator")]
         [SerializeField] private Animator m_animator = null;
@@ -15,9 +16,9 @@ namespace ShooterGame
         [SerializeField] private string m_paraName_motionZ = "motionZ";
         [SerializeField] private string m_paraName_walk = "walk";
 
-        protected override void OnInputTick()
+        private void FixedUpdate()
         {
-            if (m_followCamera != null)
+            if (m_camera_far != null)
             {
                 m_followCameraRoot.transform.position = Vector3.Lerp(m_followCameraRoot.transform.position, Character.transform.position, 0.35f);
                 m_followCameraRoot.transform.eulerAngles += new Vector3(0f, m_rotateSpeed * Input.MouseX, 0f) * Time.deltaTime;
@@ -46,6 +47,17 @@ namespace ShooterGame
             else
             {
                 m_animator.SetBool(m_paraName_walk, false);
+            }
+
+            if(Input.IsAiming)
+            {
+                m_camera_far.Priority = 0;
+                m_camera_aiming.Priority = 10;
+            }
+            else
+            {
+                m_camera_far.Priority = 10;
+                m_camera_aiming.Priority = 0;
             }
         }
     }
