@@ -4,6 +4,7 @@ namespace ShooterGame
 {
     public abstract class InputBase : ScriptableObject
     {
+        public bool IsMoving { get; protected set; }
         public float MoveX { get; protected set; }
         public float MoveZ { get; protected set; }
         public float MouseX { get; protected set; }

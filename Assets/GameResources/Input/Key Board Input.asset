@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3418b48d361814140a3b0ac108d4c44d, type: 3}
   m_Name: Key Board Input
   m_EditorClassIdentifier: 
-  m_increaseSpeed: 1
-  m_backZeroSpeed: 1
+  m_increaseSpeed: 0.1
+  m_backZeroSpeed: 0.1
