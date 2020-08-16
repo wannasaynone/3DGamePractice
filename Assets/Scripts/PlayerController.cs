@@ -40,10 +40,11 @@ namespace ShooterGame
                 Vector3 _camDirProj_forward = Vector3.ProjectOnPlane(m_followCameraRoot.transform.forward, Vector3.up);
 
                 Character.transform.rotation = Quaternion.Slerp(Character.transform.rotation, GameUtility.GetFacingDirection(_camDirProj_forward), 0.15f);
-                m_animator.SetFloat(m_paraName_motionX, Input.MoveX);
+                m_animator.SetFloat(m_paraName_motionX, m_isAimingRight ? -Input.MoveX : Input.MoveX);
                 m_animator.SetFloat(m_paraName_motionZ, Input.MoveZ);
 
-                m_animator.SetLayerWeight(m_animator.GetLayerIndex(m_layerName_aiming), Mathf.Lerp(m_animator.GetLayerWeight(m_animator.GetLayerIndex(m_layerName_aiming)), 1f, 0.5f));
+                float _targetValue = Mathf.Abs(Input.MoveZ) > 0.1f && Mathf.Abs(Input.MoveX) > 0.1f ? 0f : 1f;
+                m_animator.SetLayerWeight(m_animator.GetLayerIndex(m_layerName_aiming), Mathf.Lerp(m_animator.GetLayerWeight(m_animator.GetLayerIndex(m_layerName_aiming)), _targetValue, 0.5f));
             }
             else
             {
